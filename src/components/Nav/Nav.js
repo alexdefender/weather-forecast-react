@@ -3,9 +3,12 @@ import './style.scss';
 
 function Nav() {
   return (
-    <div className="App">
-      Working
-    </div>
+      <nav className="nav">
+          <ul>
+              <li>Today</li>
+              <li>Next days</li>
+          </ul>
+      </nav>
   );
 }
 

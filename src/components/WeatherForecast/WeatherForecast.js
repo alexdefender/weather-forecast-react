@@ -1,12 +1,12 @@
-import React from 'react';
-import './style.scss';
+import React from "react";
+import "./style.scss";
 
 function WeatherForecast() {
-  return (
-    <div className="App">
-      Working
-    </div>
-  );
+    return (
+        <div className="weather-info">
+            WeatherForecast
+        </div>
+    );
 }
 
 export default WeatherForecast;

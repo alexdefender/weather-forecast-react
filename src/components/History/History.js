@@ -1,12 +1,19 @@
-import React from 'react';
-import './style.scss';
+import React from "react";
+import "./style.scss";
 
 function History() {
-  return (
-    <div className="App">
-      Working
-    </div>
-  );
+    return (
+        <div className="history">
+            <ul>
+                <li>Kiev</li>
+                <li>Kiev</li>
+                <li>Kiev</li>
+                <li>Kiev</li>
+                <li>Kiev</li>
+            </ul>
+            <button>&#10006;</button>
+        </div>
+    );
 }
 
 export default History;

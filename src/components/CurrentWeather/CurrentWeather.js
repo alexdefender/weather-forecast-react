@@ -1,12 +1,12 @@
-import React from 'react';
-import './style.scss';
+import React from "react";
+import "./style.scss";
 
 function CurrentWeather() {
-  return (
-    <div className="App">
-      Working
-    </div>
-  );
+    return (
+        <div className="weather-info">
+            CurrentWeather
+        </div>
+    );
 }
 
 export default CurrentWeather;
