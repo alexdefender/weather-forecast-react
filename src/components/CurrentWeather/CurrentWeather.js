@@ -11,7 +11,7 @@ class CurrentWeather extends Component {
             <div key={i} className="current-weather-info">
                 <div className="current-weather__main">
                     <div className="current-weather__city">{item.name}, {item.sys.country}</div>
-                    <div className="current-weather__temp">{item.main.temp}&deg;
+                    <div className="current-weather__temp">{Math.round(item.main.temp)}&deg;
                         <img src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`} />
                     </div>
                     <div className="current-weather__description">{item.weather[0].description.toUpperCase()}</div>
