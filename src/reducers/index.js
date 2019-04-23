@@ -1,8 +1,10 @@
 import {combineReducers} from "redux";
 import cities from "./cities";
-import currentWeather from "./currentWeather";
+import current from "./current";
+import forecast from "./forecast";
 
 export default combineReducers({
     cities,
-    currentWeather
+    current,
+    forecast
 })
