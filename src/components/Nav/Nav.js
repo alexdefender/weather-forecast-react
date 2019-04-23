@@ -1,15 +1,22 @@
-import React from 'react';
-import './style.scss';
+import React, {Component} from "react";
+import "./style.scss";
+import {Link} from "react-router-dom";
 
-function Nav() {
-  return (
-      <nav className="nav">
-          <ul>
-              <li>Today</li>
-              <li>Next days</li>
-          </ul>
-      </nav>
-  );
+class Nav extends Component {
+
+    render() {
+        return (
+            <nav className="nav">
+                <ul>
+                    <li>
+                        <Link to="/">Today</Link></li>
+                    <li>
+                        <Link to="/next">Next days</Link>
+                    </li>
+                </ul>
+            </nav>
+        );
+    }
 }
 
 export default Nav;

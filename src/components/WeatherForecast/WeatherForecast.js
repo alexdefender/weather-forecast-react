@@ -1,12 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
 import "./style.scss";
 
-function WeatherForecast() {
-    return (
-        <div className="weather-info">
-            WeatherForecast
-        </div>
-    );
+class WeatherForecast extends Component{
+    render() {
+        return (
+            <div className="weather-info">
+                WeatherForecast
+            </div>
+        );
+    }
 }
 
 export default WeatherForecast;
