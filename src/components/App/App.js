@@ -5,45 +5,34 @@ import {History} from "../History"
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {WeatherForecast} from "../WeatherForecast"
 import {CurrentWeather} from "../CurrentWeather"
-import WeatherDataServices from "../../services/WeatherDataServices"
+import {connect} from "react-redux";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {items: [], value: ""};
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        if (!this.state.value.length) {
-            return;
-        }
+        console.log(this.cityInput.value);
 
-        const newItem = {
-            value: this.state.value
-        };
-
-        this.setState(state => ({
-            items: state.items.concat(newItem),
-            value: ""
-        }));
-        WeatherDataServices.getCurrentWeather(this.state.value);
-    }
-
-    handleChange(e) {
-        this.setState({value: e.target.value});
+        this.props.onAddCity(this.cityInput.value);
+        this.cityInput.value = "";
     }
 
     render() {
+        console.log(this.props.testStore)
+
         return (
             <Router>
                 <div className="container">
                     <h1 className="header">Weather Forecast React</h1>
                     <div className="search-wrapper">
                         <form onSubmit={this.handleSubmit}>
-                            <input className="search-input" type="text" value={this.state.value} onChange={this.handleChange}/>
+                            <input className="search-input" type="text" ref={(input) => {this.cityInput = input}}/>
                         </form>
                     </div>
                     <Nav/>
@@ -56,4 +45,17 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(
+    state => ({
+        testStore: state
+    }),
+    dispatch => ({
+        onAddCity: (city) => {
+            const payload = {
+              id: Date.now().toString(),
+              city
+            };
+            dispatch({type: "ADD_CITY", payload});
+        }
+    })
+)(App);
