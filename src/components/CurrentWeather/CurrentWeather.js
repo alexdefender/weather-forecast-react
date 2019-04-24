@@ -33,5 +33,4 @@ export default connect(
     state => ({
         appState: state
     })
-)
-(CurrentWeather);
+)(CurrentWeather);

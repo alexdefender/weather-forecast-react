@@ -46,7 +46,7 @@ class App extends Component {
                         </form>
                     </div>
                     <Nav/>
-                    <History/>
+                    <History getInfoFromApi={this.getInfoFromApi} />
                     <Route exact path="/" component={CurrentWeather}/>
                     <Route path="/next" component={WeatherForecast}/>
                 </div>
@@ -61,10 +61,7 @@ export default connect(
     }),
     dispatch => ({
         addCity: (city) => {
-            const payload = {
-                id: Date.now().toString(),
-                city
-            };
+            const payload = city;
             dispatch({type: "ADD_CITY", payload});
         },
         addCurrentWeather: (weather) => {

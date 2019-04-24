@@ -3,26 +3,49 @@ import "./style.scss";
 import {connect} from "react-redux"
 
 class History extends Component {
+    constructor(props) {
+        super(props);
+        this.citiesHistory = [];
+        this.checkWeatherFromHistory = this.checkWeatherFromHistory.bind(this);
+        this.delAllCities = this.delAllCities.bind(this);
+        this.checkCities = this.checkCities.bind(this);
+    }
+
+    checkWeatherFromHistory(e) {
+        this.props.getInfoFromApi(e.target.innerHTML)
+    }
+
+    delAllCities() {
+        this.props.delAllCities();
+    }
+
+    /*
+    * check cities for duplicate and out limit to 5
+    * */
+    checkCities() {
+        this.props.appState.cities.map((item, i) => {
+            if (item === null) {
+                this.citiesHistory = [];
+            } else {
+                const newCity = item.toUpperCase();
+
+                if (!this.citiesHistory.includes(newCity)) {
+                    i > 3 ? this.citiesHistory.splice(0, 1, newCity) : this.citiesHistory.push(newCity);
+                }
+            }
+        })
+    }
 
     render() {
-        this.props.appState.cities.map(item => console.log(item.city))
-
-        const render = this.props.appState.cities.map(item => {
-            console.log(this.props.appState.cities.includes(item))
-
-        });
+        this.checkCities();
 
         return (
-
             <div className="history">
                 <ul>
-                    <li>Kiev</li>
-                    <li>Kiev</li>
-                    <li>Kiev</li>
-                    <li>Kiev</li>
-                    <li>Kiev</li>
+                    {this.citiesHistory.map((city, i) =>
+                        <li key={i} onClick={this.checkWeatherFromHistory}>{city}</li>)}
                 </ul>
-                <button>&#10006;</button>
+                <button onClick={this.delAllCities}>&#10006;</button>
             </div>
         );
     }
@@ -31,5 +54,11 @@ class History extends Component {
 export default connect(
     state => ({
         appState: state
+    }),
+    dispatch => ({
+        delAllCities: () => {
+            const payload = null;
+            dispatch({type: "DELETE_CITIES", payload});
+        }
     })
 )(History);
