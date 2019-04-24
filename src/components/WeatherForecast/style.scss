@@ -1,0 +1,36 @@
+$background: linear-gradient(135deg, rgba(253, 222, 155, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 251, 241, 1) 5%, rgba(255, 190, 51, 1) 75%);
+
+.forecast-weather-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em;
+  padding: 1em;
+  background: $background;
+  border-radius: 5px;
+
+  div, h2, p, ul {
+    background: transparent;
+
+  }
+
+  li {
+    list-style-type: none;
+    margin: 7px;
+    background: transparent;
+
+  }
+
+  .forecast-weather__img {
+    margin: 0 4em 0 4em;
+    background: transparent;
+
+  }
+
+  .forecast-weather__description {
+    font-size: 2em;
+    background: transparent;
+
+  }
+}

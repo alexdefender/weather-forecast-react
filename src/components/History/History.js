@@ -28,7 +28,6 @@ class History extends Component {
                 this.citiesHistory = [];
             } else {
                 const newCity = item.toUpperCase();
-
                 if (!this.citiesHistory.includes(newCity)) {
                     i > 3 ? this.citiesHistory.splice(0, 1, newCity) : this.citiesHistory.push(newCity);
                 }

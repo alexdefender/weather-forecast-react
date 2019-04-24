@@ -41,19 +41,19 @@ class App extends Component {
         return (
             <Router>
                 <div className="container">
-                    <h1 className="header">Weather Forecast React</h1>
+                    <h1 className="header">React Weather Forecast</h1>
                     <div className="search-wrapper">
                         <form onSubmit={this.handleSubmit}>
-                            <input placeholder="Enter city in english... (Kiev, UA)" className="search-input" type="text" ref={(input) => {
+                            <input placeholder="Enter city in english... (Kiev, UA)" className="search-input"
+                                   type="text" ref={(input) => {
                                 this.cityInput = input
                             }}/>
                         </form>
                     </div>
                     <Nav/>
-                    <History getInfoFromApi={this.getInfoFromApi} />
+                    <History getInfoFromApi={this.getInfoFromApi}/>
                     <Route exact path="/" component={CurrentWeather}/>
                     <Route path="/next" component={WeatherForecast}/>
-
                 </div>
             </Router>
         );

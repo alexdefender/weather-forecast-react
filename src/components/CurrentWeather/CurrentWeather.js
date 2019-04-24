@@ -8,12 +8,11 @@ class CurrentWeather extends Component {
         const render = this.props.appState.current[this.props.appState.current.length - 1];
 
         return render !== undefined ? (
-
             <div className="current-weather-info">
                 <div className="current-weather__main">
                     <div className="current-weather__city">{render.name}, {render.sys.country}</div>
                     <div className="current-weather__temp">{Math.round(render.main.temp)}&deg;
-                        <img src={`http://openweathermap.org/img/w/${render.weather[0].icon}.png`} />
+                        <img src={`http://openweathermap.org/img/w/${render.weather[0].icon}.png`}/>
                     </div>
                     <div className="current-weather__description">{render.weather[0].description.toUpperCase()}</div>
                 </div>
@@ -26,7 +25,7 @@ class CurrentWeather extends Component {
                         <li>Clouds: {render.clouds.all}</li>
                     </ul>
                 </div>
-            </div>) : ""
+            </div>) : "";
     }
 }
 

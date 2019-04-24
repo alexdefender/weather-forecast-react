@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import "./style.scss";
 import {connect} from "react-redux"
 
 class WeatherForecastItem extends Component {
@@ -27,5 +26,4 @@ export default connect(
     state => ({
         appState: state
     })
-)
-(WeatherForecastItem);
+)(WeatherForecastItem);
