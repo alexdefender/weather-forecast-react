@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./style.scss";
 import {Nav} from "../Nav"
 import {History} from "../History"
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {HashRouter as Router, Route} from "react-router-dom";
 import {WeatherForecast} from "../WeatherForecast"
 import {CurrentWeather} from "../CurrentWeather"
 import {connect} from "react-redux";
