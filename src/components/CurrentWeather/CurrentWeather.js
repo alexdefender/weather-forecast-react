@@ -8,6 +8,7 @@ class CurrentWeather extends Component {
         const render = this.props.appState.current[this.props.appState.current.length - 1];
 
         return render !== undefined ? (
+
             <div className="current-weather-info">
                 <div className="current-weather__main">
                     <div className="current-weather__city">{render.name}, {render.sys.country}</div>

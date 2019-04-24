@@ -17,7 +17,6 @@ class App extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.addCity(this.cityInput.value);
         this.getInfoFromApi(this.cityInput.value);
         this.cityInput.value = "";
     }
@@ -27,8 +26,13 @@ class App extends Component {
             .then(currentWeather => {
                 WeatherDataServices.getWeatherForecast(city)
                     .then(weatherForecast => {
+                        if (currentWeather.message === "city not found") {
+                            alert("No found city, please correct name!");
+                            return false;
+                        }
                         this.props.addCurrentWeather(currentWeather);
                         this.props.addWeatherForecast(weatherForecast);
+                        this.props.addCity(city);
                     })
             })
     }
@@ -40,7 +44,7 @@ class App extends Component {
                     <h1 className="header">Weather Forecast React</h1>
                     <div className="search-wrapper">
                         <form onSubmit={this.handleSubmit}>
-                            <input placeholder="Kiev" className="search-input" type="text" ref={(input) => {
+                            <input placeholder="Enter city in english... (Kiev, UA)" className="search-input" type="text" ref={(input) => {
                                 this.cityInput = input
                             }}/>
                         </form>
@@ -49,6 +53,7 @@ class App extends Component {
                     <History getInfoFromApi={this.getInfoFromApi} />
                     <Route exact path="/" component={CurrentWeather}/>
                     <Route path="/next" component={WeatherForecast}/>
+
                 </div>
             </Router>
         );

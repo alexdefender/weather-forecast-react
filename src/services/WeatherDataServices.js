@@ -6,7 +6,6 @@ class WeatherDataService {
     getCurrentWeather(city) {
         return fetch(API_DATA_WEATHER + city  + API_KEY)
             .then(response => {
-                // console.log(response.json())
                 return response.json();
             })
             .catch(err => {

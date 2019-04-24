@@ -15,9 +15,7 @@ class WeatherForecast extends Component {
                 weatherForecast.list
                     .filter(time => time.dt_txt.includes(WEATHER_FORECAST_TIME))
                     .map((forecastItem, i) =>
-                        <div key={i} className="weather-info">
-                            <WeatherForecastItem state={forecastItem}/>
-                        </div>
+                            <WeatherForecastItem key={i} state={forecastItem}/>
                     )) : "";
     }
 }
