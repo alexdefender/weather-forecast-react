@@ -18,7 +18,7 @@ const CurrentWeather = props => {
           <div className="current-weather__temp">
             {Math.round(main.temp)}&deg;
             <img
-              src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}
+              src={`https://openweathermap.org/img/w/${weather[0].icon}.png`}
             />
           </div>
           <div className="current-weather__description">

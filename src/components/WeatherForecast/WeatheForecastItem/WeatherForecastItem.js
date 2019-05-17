@@ -10,7 +10,7 @@ const WeatherForecastItem = props => {
         <p>{dt_txt.substr(0, 10)}</p>
       </div>
       <img
-        src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}
+        src={`https://openweathermap.org/img/w/${weather[0].icon}.png`}
         alt=""
         className="forecast-weather__img"
       />
