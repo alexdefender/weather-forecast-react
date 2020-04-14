@@ -1,65 +1,44 @@
-import React, { Component } from "react";
-import "./style.scss";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './History.scss';
+import { deleteCities } from '../../store/actions';
 
 class History extends Component {
-  constructor(props) {
-    super(props);
-    this.citiesHistory = [];
-  }
+    getWeatherFromHistory = ({ target }) => {
+        this.props.getInfoFromApi(target.innerHTML);
+    };
 
-  checkWeatherFromHistory = e => {
-    this.props.getInfoFromApi(e.target.innerHTML);
-  };
+    deleteCities = () => {
+        this.props.deleteCities();
+    };
 
-  delAllCities = () => {
-    this.props.delAllCities();
-  };
+    render() {
+        const { cities } = this.props;
 
-  /*
-   * check cities for duplicate and out limit to 5
-   * */
-  checkCities = () => {
-    this.props.appState.cities.map((item, i) => {
-      if (item === null) {
-        this.citiesHistory = [];
-      } else {
-        const newCity = item.toUpperCase();
-        if (!this.citiesHistory.includes(newCity)) {
-          i > 3
-            ? this.citiesHistory.splice(0, 1, newCity)
-            : this.citiesHistory.push(newCity);
-        }
-      }
-    });
-  };
+        const isCities = Object.keys(cities).length !== 0;
+        const btn = isCities ? (
+            <button onClick={this.deleteCities}>&#10006;</button>
+        ) : (
+            ''
+        );
 
-  render() {
-    this.checkCities();
-
-    return (
-      <div className="history">
-        <ul>
-          {this.citiesHistory.map((city, i) => (
-            <li key={i} onClick={this.checkWeatherFromHistory}>
-              {city}
-            </li>
-          ))}
-        </ul>
-        <button onClick={this.delAllCities}>&#10006;</button>
-      </div>
-    );
-  }
+        return (
+            <div className='history'>
+                <ul>
+                    {Object.keys(cities).map((city, i) => (
+                        <li key={i} onClick={this.getWeatherFromHistory}>
+                            {`${city[0].toUpperCase()}${city.slice(1)}`}
+                        </li>
+                    ))}
+                </ul>
+                {btn}
+            </div>
+        );
+    }
 }
 
-export default connect(
-  state => ({
-    appState: state
-  }),
-  dispatch => ({
-    delAllCities: () => {
-      const payload = null;
-      dispatch({ type: "DELETE_CITIES", payload });
-    }
-  })
-)(History);
+const mapStateToProps = state => ({
+    cities: state.cities,
+});
+
+export default connect(mapStateToProps, { deleteCities })(History);

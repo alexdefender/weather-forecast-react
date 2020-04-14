@@ -1,0 +1,4 @@
+export const ADD_CITY = 'ADD_CITY';
+export const DELETE_CITIES = 'DELETE_CITIES';
+export const WEATHER_FORECAST = 'WEATHER_FORECAST';
+export const CURRENT_WEATHER = 'CURRENT_WEATHER';

@@ -1,0 +1,38 @@
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    @extend %flex-center;
+    background: white;
+
+    ul {
+        @extend %flex-center;
+        list-style: none;
+        background: white;
+    }
+
+    li {
+        @extend %flex-center;
+        background: white;
+        width: 100px;
+        height: 40px;
+        margin: 0 10px;
+        border-radius: 5px;
+        background: linear-gradient(
+            to right,
+            rgba(251, 154, 137, 1) 0%,
+            rgba(249, 193, 185, 1) 0%,
+            rgba(239, 123, 113, 1) 100%
+        );
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        background: transparent;
+        color: white;
+    }
+}

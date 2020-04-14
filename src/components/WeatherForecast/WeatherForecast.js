@@ -1,25 +1,26 @@
-import React, { Component } from "react";
-import "./style.scss";
-import { connect } from "react-redux";
-import { WeatherForecastItem } from "./WeatheForecastItem";
+import React from 'react';
+import './WeatherForecast.scss';
+import { connect } from 'react-redux';
+import { WeatherForecastItem } from './WeatheForecastItem';
 
-const WEATHER_FORECAST_TIME = "12:00:00";
+const WEATHER_FORECAST_TIME = '12:00:00';
 
-const WeatherForecast = props => {
-  const render = [];
-  render.push(props.appState.forecast[props.appState.forecast.length - 1]);
+const WeatherForecast = ({ forecast }) => {
+    if (Object.keys(forecast).length === 0) {
+        return '';
+    }
 
-  return !render.includes(undefined)
-    ? render.map(weatherForecast =>
-        weatherForecast.list
-          .filter(time => time.dt_txt.includes(WEATHER_FORECAST_TIME))
-          .map((forecastItem, i) => (
-            <WeatherForecastItem key={i} state={forecastItem} />
-          ))
-      )
-    : "";
+    const { list } = forecast;
+
+    return list
+        .filter(time => time.dt_txt.includes(WEATHER_FORECAST_TIME))
+        .map((weatherForecast, i) => (
+            <WeatherForecastItem key={i} {...{ weatherForecast }} />
+        ));
 };
 
-export default connect(state => ({
-  appState: state
-}))(WeatherForecast);
+const mapStateToProps = state => ({
+    forecast: state.forecast,
+});
+
+export default connect(mapStateToProps)(WeatherForecast);

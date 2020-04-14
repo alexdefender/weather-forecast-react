@@ -1,0 +1,52 @@
+$background: linear-gradient(
+    135deg,
+    rgba(253, 222, 155, 1) 0%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 251, 241, 1) 5%,
+    rgba(255, 190, 51, 1) 75%
+);
+
+.current-weather-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: $background;
+    color: #333333;
+
+    .current-weather__main {
+        background: transparent;
+
+        .current-weather__city {
+            font-size: 4vh;
+            background: transparent;
+        }
+
+        .current-weather__temp {
+            font-size: 7vh;
+            background: transparent;
+        }
+
+        img,
+        .current-weather__description {
+            background: transparent;
+        }
+    }
+
+    .current-weather__more {
+        background: transparent;
+
+        ul {
+            list-style: none;
+            background: transparent;
+        }
+
+        li {
+            margin: 0.5vh 0;
+            background: transparent;
+        }
+    }
+}

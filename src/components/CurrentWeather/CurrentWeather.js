@@ -1,45 +1,45 @@
-import React from "react";
-import "./style.scss";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
+import './CurrentWeather.scss';
 
-const CurrentWeather = props => {
-  const arrCurrentWeather = props.appState.current;
+const CurrentWeather = ({ current }) => {
+    if (Object.keys(current).length === 0) {
+        return '';
+    }
 
-  if (arrCurrentWeather[arrCurrentWeather.length - 1] !== undefined) {
-    const { name, sys, main, weather, wind, clouds } = arrCurrentWeather[
-      arrCurrentWeather.length - 1
-    ];
+    const { name, sys, main, weather, wind, clouds } = current;
+    const imgSrc = `https://openweathermap.org/img/w/${weather[0].icon}.png`;
+    const temp = Math.round(main.temp);
+    const weatherDescription = weather[0].description.toUpperCase();
+
     return (
-      <div className="current-weather-info">
-        <div className="current-weather__main">
-          <div className="current-weather__city">
-            {name}, {sys.country}
-          </div>
-          <div className="current-weather__temp">
-            {Math.round(main.temp)}&deg;
-            <img
-              src={`https://openweathermap.org/img/w/${weather[0].icon}.png`}
-            />
-          </div>
-          <div className="current-weather__description">
-            {weather[0].description.toUpperCase()}
-          </div>
+        <div className='current-weather-info'>
+            <div className='current-weather__main'>
+                <div className='current-weather__city'>
+                    {name}, {sys.country}
+                </div>
+                <div className='current-weather__temp'>
+                    {temp}&deg;
+                    <img src={imgSrc} alt='' />
+                </div>
+                <div className='current-weather__description'>
+                    {weatherDescription}
+                </div>
+            </div>
+            <div className='current-weather__more'>
+                <ul>
+                    <li>Humidity: {main.humidity} %</li>
+                    <li>Pressure: {main.pressure} mb</li>
+                    <li>Wind speed: {wind.speed} m/s</li>
+                    <li>Clouds: {clouds.all}</li>
+                </ul>
+            </div>
         </div>
-        <div className="current-weather__more">
-          <ul>
-            <li>Humidity: {main.humidity} %</li>
-            <li>Pressure: {main.pressure} mb</li>
-            <li>Wind speed: {wind.speed} m/s</li>
-            <li>Clouds: {clouds.all}</li>
-          </ul>
-        </div>
-      </div>
     );
-  } else {
-    return "";
-  }
 };
 
-export default connect(state => ({
-  appState: state
-}))(CurrentWeather);
+const mapStateToProps = state => ({
+    current: state.current,
+});
+
+export default connect(mapStateToProps)(CurrentWeather);

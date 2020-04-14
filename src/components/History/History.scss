@@ -1,0 +1,56 @@
+.history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 75%;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 auto;
+    background: linear-gradient(
+        to bottom,
+        rgba(241, 255, 204, 1) 0%,
+        rgba(241, 255, 204, 1) 31%,
+        rgba(215, 247, 176, 1) 58%,
+        rgba(200, 243, 160, 1) 74%
+    );
+
+    ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        background: transparent;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background-color: rgb(154, 187, 122);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #5683a7;
+        }
+    }
+
+    li {
+        margin: 7px;
+        cursor: pointer;
+        background: transparent;
+        color: #86aecc;
+    }
+
+    button {
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        color: red;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+}
